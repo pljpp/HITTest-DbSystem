@@ -111,7 +111,6 @@ def testNLJ(buffer):
     '''
     # 释放缓冲区
     buffer.freeBuffer()
-    count = 0
     num = 0
     nljlist = []
     # 将体积大的S属性作为内层, 体积小的R属性作为外层
@@ -134,22 +133,30 @@ def testNLJ(buffer):
                             nljlist.append(buffer.data[rt][2 * li])
                             nljlist.append(buffer.data[rt][2 * li + 1])
                             nljlist.append(buffer.data[rs][2 * lj + 1])
+                            # 写入磁盘(1个块)
+                            if len(nljlist) % 21 == 0:
+                                num = len(nljlist)
+                                templist = nljlist[num - 21: num].copy()
+                                bjoin = buffer.getNewBlockInBuffer()
+                                for item in range(0, len(templist), 3):
+                                    buffer.data[bjoin].append(templist[item])
+                                    buffer.data[bjoin].append(templist[item + 1])
+                                    buffer.data[bjoin].append(templist[item + 2])
+                                buffer.writeBlockToDisk('testNLJ' + str(num // 21 - 1), bjoin)
+                                buffer.freeBlockInBuffer(bjoin)
+                                templist = []
                 # 清除S关系的块
                 buffer.freeBlockInBuffer(rs)
-    bjoin = buffer.getNewBlockInBuffer()
-    for item in range(0, len(nljlist), 3):
-        if count % 7 == 0 and count != 0:
-            buffer.writeBlockToDisk('testNLJ' + str(count // 7 - 1), bjoin)
-            buffer.freeBlockInBuffer(bjoin)
-            bjoin = buffer.getNewBlockInBuffer()
-            num = num + 1
-        buffer.data[bjoin].append(nljlist[item])
-        buffer.data[bjoin].append(nljlist[item + 1])
-        buffer.data[bjoin].append(nljlist[item + 2])
-        count = count + 1
-    # 同时处理最后一次写入文件或者不满7个元组的文件
-    if 7 * num < count:
-        buffer.writeBlockToDisk('testNLJ' + str(num), bjoin)
+    # 处理最后一次写入文件或者不满7个元组的文件
+    if num < len(nljlist):
+        templist = nljlist[num: len(nljlist)].copy()
+        bjoin = buffer.getNewBlockInBuffer()
+        for item in range(0, len(templist), 3):
+            buffer.data[bjoin].append(templist[item])
+            buffer.data[bjoin].append(templist[item + 1])
+            buffer.data[bjoin].append(templist[item + 2])
+        # num未作改变
+        buffer.writeBlockToDisk('testNLJ' + str(num // 21), bjoin)
         buffer.freeBlockInBuffer(bjoin)
     
 def testSMJ(buffer):
@@ -160,8 +167,7 @@ def testSMJ(buffer):
     '''
     # 释放缓冲区
     buffer.freeBuffer()
-    sjoin = []
-    count = 0
+    smjlist = []
     for i in range(3):
         # 清空缓冲区
         buffer.freeBuffer()
@@ -171,9 +177,21 @@ def testSMJ(buffer):
             for k in range(0, len(smjr), 2):
                 for l in range(0, len(smjs), 2):
                     if smjs[l] == smjr[k]:
-                        sjoin.append(smjs[l])
-                        sjoin.append(smjs[l + 1])
-                        sjoin.append(smjr[k + 1])
+                        smjlist.append(smjs[l])
+                        smjlist.append(smjs[l + 1])
+                        smjlist.append(smjr[k + 1])
+                        # 写入文件(1个块)
+                        if len(smjlist) % 21 == 0:
+                            num = len(smjlist)
+                            templist = smjlist[num - 21: num].copy()
+                            sjoin = buffer.getNewBlockInBuffer()
+                            for item in range(0, len(templist), 3):
+                                buffer.data[sjoin].append(templist[item])
+                                buffer.data[sjoin].append(templist[item + 1])
+                                buffer.data[sjoin].append(templist[item + 2])
+                            buffer.writeBlockToDisk('testSMJ' + str(num // 21 - 1), sjoin)
+                            buffer.freeBlockInBuffer(sjoin)
+                            templist = []
                     # S.C<R.A, 则S向前移动
                     elif smjs[l] < smjr[k]:
                         pass
@@ -181,14 +199,18 @@ def testSMJ(buffer):
                     else:
                         continue
     # 释放缓冲区
+    # 处理最后一次写入文件或者不满7个元组的文件
     buffer.freeBuffer()
-    # 写入内存
-    for i in range(0, len(sjoin), 21):
-        smjlist = sjoin[i: 21 + i]
-        tosmj = buffer.getNewBlockInBuffer()
-        buffer.data[tosmj] = smjlist
-        buffer.writeBlockToDisk('testSMJ' + str(count), tosmj)
-        count = count + 1
+    if num < len(smjlist):
+        templist = smjlist[num: len(smjlist)].copy()
+        sjoin = buffer.getNewBlockInBuffer()
+        for item in range(0, len(templist), 3):
+            buffer.data[sjoin].append(templist[item])
+            buffer.data[sjoin].append(templist[item + 1])
+            buffer.data[sjoin].append(templist[item + 2])
+        # num未作改变
+        buffer.writeBlockToDisk('testSMJ' + str(num // 21), sjoin)
+        buffer.freeBlockInBuffer(sjoin)
     
 def testHJ(buffer):
     '''
