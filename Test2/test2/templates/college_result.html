@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'picnic/picnic.min.css' %}">
+<title></title>
+</head>
+<div style="overflow: hidden; height: 100px;">
+	<nav class="demo">
+		<span class="brand">大学数据库管理系统</span>
+		<div class="menu">
+			<a href="\college\" class="pseudo button icon-picture">返回首页</a>
+		</div>
+	</nav>
+</div>
+<div class="flex ten center demo">
+	<div></div>
+	<div class="four-fifth">
+		<div class="full">
+			<header>
+				<h3>查询结果</h3>
+			</header>
+		</div>
+		<table class="full">
+			<thead>
+				<tr>
+					{% for key,value in select.0.items %}
+					<th>{{ key }}</th>
+					{% endfor %}
+				</tr>
+			</thead>
+			<tbody>
+				{% for item in select %}
+				<tr>
+					{% for key,value in item.items %}
+					<td>{{ value }}</td>
+					{% endfor %}
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div></div>
+</div>
+<body>
+</body>
+</html>

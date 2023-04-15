@@ -1,0 +1,19 @@
+{% extends 'add.html' %} {% block add %}
+<h3>学生编号</h3>
+<label>
+	<input type="text" id="sid" name="sid" value="{{ add.sid }}">
+</label>
+<p></p>
+<h3>学生姓名</h3>
+<label>
+	<input type="text" id="sname" name="sname" value="{{ add.sname }}">
+</label>
+<h3>学分</h3>
+<label>
+	<input type="text" value="0" disabled>
+</label>
+{% if add.error != '' %}
+<h3>
+	<span class="label error">错误： {{ add.error }}</span>
+</h3>
+{% endif %} {% endblock %}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+{% load static %}
+<title>大学机构首页</title>
+<link rel="stylesheet" type="text/css" href="{% static 'picnic/picnic.min.css' %}">
+</head>
+<body>
+	<p></p>
+	<p></p>
+	<p></p>
+	<div class="flex five demo">
+		<div></div>
+		<div class="three-fifth">
+			<h2>大学机构数据库首页</h2>
+		</div>
+		<div></div>
+	</div>
+	<div class="flex five center demo">
+		<div></div>
+		<div class="three-fifth">
+			<article class="card">
+				<header>
+					<h3>实体集</h3>
+					<div class="flex four grow demo">
+						<div>
+							<a class='button success full' href="/department/list/">系信息</a>
+						</div>
+						<div>
+							<a class='button success full' href="/student/list/">学生信息</a>
+						</div>
+						<div>
+							<a class='button success full' href="/instructor/list/">教师信息</a>
+						</div>
+						<div>
+							<a class='button success full' href="/course/list/">课程信息</a>
+						</div>
+						<div>
+							<a class='button success full' href="/classroom/list/">教室信息</a>
+						</div>
+						<div>
+							<a class='button success full' href="/section/list/">课程段信息</a>
+						</div>
+						<div>
+							<a class='button success full' href="/test/list/">实验信息</a>
+						</div>
+					</div>
+				</header>
+			</article>
+		</div>
+		<div></div>
+	</div>
+	<div class="flex five center demo">
+		<div></div>
+		<div class="three-fifth">
+			<article class="card">
+				<header>
+					<h3>联系集</h3>
+					<div class="flex four grow demo">
+						<div>
+							<a class='button warning full' href="/takes/list/">学生选课</a>
+						</div>
+						<div>
+							<a class='button warning full' href="/teaches/list/">教师授课</a>
+						</div>
+						<div>
+							<a class='button warning full' href="/stud_dept/list/">系与学生</a>
+						</div>
+						<div>
+							<a class='button warning full' href="/inst_dept/list/">系与教师</a>
+						</div>
+						<div>
+							<a class='button warning full' href="/sec_class/list/">教室与课程段</a>
+						</div>
+						<div>
+							<a class='button warning full' href="/sec_time/list/">时段与课程段</a>
+						</div>
+						<div>
+							<a class='button warning full' href="/need/list/">课程实验</a>
+						</div>
+					</div>
+				</header>
+			</article>
+		</div>
+		<div></div>
+	</div>
+	<div class="flex five center demo">
+		<div></div>
+		<div class="three-fifth">
+			<article class="card">
+				<header>
+					<h3>视图</h3>
+					<div class="flex four demo">
+						<div>
+							<a class='button primary full' href="/view/studentindepartment/">系中学生</a>
+						</div>
+						<div>
+							<a class='button primaryg full' href="/view/instructorindepartment/">系中教师</a>
+						</div>
+						<div>
+							<a class='button primary full' href="/view/instructorteaches/">教师授课</a>
+						</div>
+						<div>
+							<a class='button primary full' href="/view/studenttakes/">学生选课</a>
+						</div>
+					</div>
+				</header>
+			</article>
+		</div>
+		<div></div>
+	</div>
+	<div class="flex five center demo">
+		<div></div>
+		<div class="three-fifth">
+			<article class="card">
+				<header>
+					<h3>SQL语句</h3>
+					<div class="flex four demo">
+						<form method="post" class="full">
+							{% csrf_token %}
+							<textarea value='{{ sql_carry.sql_carry }}' id='sentence' name='sentence'></textarea>
+							{% if sql_carry.error != '' %}
+							<h3>
+								<span class="label error">错误： {{ sql_carry.error }}</span>
+							</h3>
+							{% endif %}
+							<p></p>
+							<button type="submit" class="button success">执行</button>
+						</form>
+					</div>
+				</header>
+			</article>
+		</div>
+		<div></div>
+	</div>
+</body>
+</html>

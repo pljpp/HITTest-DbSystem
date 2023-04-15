@@ -1,0 +1,31 @@
+{% extends 'add.html' %} {% block add %}
+<h3>学生编号</h3>
+<label>
+	<input type="text" id="sid" name="sid" value="{{ add.sid }}">
+</label>
+<h3>课程编号</h3>
+<label>
+	<input type="text" id="cid" name="cid" value="{{ add.cid }}">
+</label>
+<p></p>
+<h3>课程段编号</h3>
+<label>
+	<input type="text" id="section" name="section" value="{{ add.section }}">
+</label>
+<h3>学期</h3>
+<label>
+	<input type="text" id="semester" name="semester" value="{{ add.semester }}">
+</label>
+<h3>学年</h3>
+<label>
+	<input type="text" id="year" name="year" value="{{ add.year }}">
+</label>
+<h3>成绩</h3>
+<label>
+	<input type="text" id="grade" name="grade" value="{{ add.grade }}" readonly>
+</label>
+{% if add.error != '' %}
+<h3>
+	<span class="label error">错误： {{ add.error }}</span>
+</h3>
+{% endif %} {% endblock %}

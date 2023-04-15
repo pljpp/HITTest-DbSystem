@@ -1,0 +1,19 @@
+{% extends 'modify.html' %} {% block modify %}
+<h3>学生编号</h3>
+<label>
+	<input type="text" id="sid" name="sid" value="{{ modify.sid }}">
+</label>
+<p></p>
+<h3>学生姓名</h3>
+<label>
+	<input type="text" id="sname" name="sname" value="{{ modify.sname }}">
+</label>
+<h3>学分</h3>
+<label>
+	<input type="text" id="points" name="points" value="{{ modify.points }}">
+</label>
+{% if modify.error != '' %}
+<h3>
+	<span class="label error">错误： {{ modify.error }}</span>
+</h3>
+{% endif %} {% endblock %}

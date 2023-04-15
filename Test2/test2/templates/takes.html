@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'picnic/picnic.min.css' %}">
+<title>大学机构数据库系统</title>
+</head>
+
+<body>
+	<div style="overflow: hidden; height: 100px;">
+		<nav class="demo">
+			<span class="brand">大学数据库管理系统</span>
+			<div class="menu">
+				<a href="\college\" class="pseudo button icon-picture">返回首页</a>
+			</div>
+		</nav>
+	</div>
+	<div class="flex three center demo">
+		<div class="two-third">
+			<header>
+				<h3>学生选课信息操作</h3>
+				<div class="flex three demo">
+					<div>
+						<a class='button success' href="/takes/add/">增加选课信息</a>
+					</div>
+				</div>
+			</header>
+			<table class="full">
+				<thead>
+					<tr>
+						<th>学生编号</th>
+						<th>课程编号</th>
+						<th>课程段编号</th>
+						<th>学期</th>
+						<th>学年</th>
+						<th>成绩</th>
+						<th>修改</th>
+						<th>删除</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in takes_list %}
+					<tr>
+						<td>{{ item.sid }}</td>
+						<td>{{ item.cid }}</td>
+						<td>{{ item.section }}</td>
+						<td>{{ item.semester }}</td>
+						<td>{{ item.year }}</td>
+						<td>{{ item.grade }}</td>
+						<td>
+							<a class='button warning full'
+								href="/takes/modify/?sid={{ item.sid }}&cid={{ item.cid }}&section={{ item.section }}&semester={{ item.semester }}&year={{ item.year }}&grade={{ item.grade }}">修改</a>
+						</td>
+						<td>
+							<a class='button error full'
+								href="/takes/delete/?sid={{ item.sid }}&cid={{ item.cid }}&section={{ item.section }}&semester={{ item.semester }}&year={{ item.year }}">删除</a>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

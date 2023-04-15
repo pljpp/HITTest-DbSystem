@@ -1,0 +1,18 @@
+{% extends "list.html" %}{% block list %}
+<table class="full">
+	<thead>
+		<tr>
+			<th>实验编号</th>
+			<th>课程编号</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in need_list %}
+		<tr>
+			<td>{{ item.tid }}</td>
+			<td>{{ item.cid }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

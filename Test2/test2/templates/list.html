@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'picnic/picnic.min.css' %}">
+<title>大学机构数据库系统</title>
+</head>
+
+<body>
+	<div style="overflow: hidden; height: 100px;">
+		<nav class="demo">
+			<span class="brand">大学数据库管理系统</span>
+			<div class="menu">
+				<a href="\college\" class="pseudo button icon-picture">返回首页</a>
+			</div>
+		</nav>
+	</div>
+	<div class="flex five center demo">
+		<div></div>
+		<div class="three-fifth">{% block list %} {% endblock %}</div>
+		<div></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'modify.html' %} {% block modify %}
+<h3>学生编号</h3>
+<label>
+	<input type="text" id="sid" name="sid" value="{{ modify.sid }}" readonly>
+</label>
+<h3>课程编号</h3>
+<label>
+	<input type="text" id="cid" name="cid" value="{{ modify.cid }}" readonly>
+</label>
+<p></p>
+<h3>课程段编号</h3>
+<label>
+	<input type="text" id="section" name="section" value="{{ modify.section }}" readonly>
+</label>
+<h3>学期</h3>
+<label>
+	<input type="text" id="semester" name="semester" value="{{ modify.semester }}" readonly>
+</label>
+<h3>学年</h3>
+<label>
+	<input type="text" id="year" name="year" value="{{ modify.year }}" readonly>
+</label>
+<h3>成绩</h3>
+<label>
+	<input type="text" id="grade" name="grade" value="{{ modify.grade }}">
+</label>
+{% if modify.error != '' %}
+<h3>
+	<span class="label error">错误： {{ modify.error }}</span>
+</h3>
+{% endif %} {% endblock %}

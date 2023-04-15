@@ -1,0 +1,20 @@
+{% extends "list.html" %}{% block list %}
+<table class="full">
+	<thead>
+		<tr>
+			<th>系编号</th>
+			<th>系名称</th>
+			<th>楼</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in department_list %}
+		<tr>
+			<td>{{ item.did }}</td>
+			<td>{{ item.dname }}</td>
+			<td>{{ item.building }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

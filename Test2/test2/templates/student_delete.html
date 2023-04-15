@@ -1,0 +1,11 @@
+{% extends 'delete.html' %} {% block delete %}
+<h3>学生编号</h3>
+<label>
+	<input type="text" id="sid" name="sid" value="{{ delete.sid }}">
+</label>
+<p></p>
+{% if delete.error != '' %}
+<h3>
+	<span class="label error">错误： {{ delete.error }}</span>
+</h3>
+{% endif %} {% endblock %}

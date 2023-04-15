@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'picnic/picnic.min.css' %}">
+<title>大学机构数据库系统</title>
+</head>
+
+<body>
+	<div style="overflow: hidden; height: 100px;">
+		<nav class="demo">
+			<span class="brand">大学数据库管理系统</span>
+			<div class="menu">
+				<a href="\college\" class="pseudo button icon-picture">返回首页</a>
+			</div>
+		</nav>
+	</div>
+	<div class="flex three center demo">
+		<div class="two-third">
+			<table class="full">
+				<thead>
+					<tr>
+						<th>课程编号</th>
+						<th>课程段编号</th>
+						<th>学期</th>
+						<th>学年</th>
+						<th>学生编号</th>
+						<th>学生姓名</th>
+						<th>学分</th>
+						<th>成绩</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in student_takes_list %}
+					<tr>
+						<td>{{ item.cid }}</td>
+						<td>{{ item.section }}</td>
+						<td>{{ item.semester }}</td>
+						<td>{{ item.year }}</td>
+						<td>{{ item.sid }}</td>
+						<td>{{ item.sname }}</td>
+						<td>{{ item.points }}</td>
+						<td>{{ item.grade }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

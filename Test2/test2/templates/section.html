@@ -1,0 +1,52 @@
+{% extends "list.html" %}{% block list %}
+<div class="full">
+	<header>
+		<h3>课程段操作</h3>
+		<div class="flex three demo">
+			<div>
+				<a class='button success' href="/section/add/">增加课程段</a>
+			</div>
+		</div>
+	</header>
+</div>
+<table class="full">
+	<thead>
+		<tr>
+			<th>课程编号</th>
+			<th>课程段编号</th>
+			<th>学期</th>
+			<th>学年</th>
+			<th>修改</th>
+			<th>删除</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in section_list %}
+		<tr>
+			<td>{{ item.cid }}</td>
+			<td>{{ item.section }}</td>
+			{% if item.semester == '1' %}
+			<td>第一学期</td>
+			{% else %}
+			<td>第二学期</td>
+			{% endif %} {% if item.year == '1' %}
+			<td>大一</td>
+			{% elif item.year == '2' %}
+			<td>大二</td>
+			{% elif item.year == '3' %}
+			<td>大三</td>
+			{% else %}
+			<td>大四</td>
+			{% endif %}
+			<td>
+				<button class="full" disabled>修改</button>
+			</td>
+			<td>
+				<a class='button error full'
+					href="/section/delete/?cid={{ item.cid }}&section={{ item.section }}&semester={{ item.semester }}&year={{ item.year }}">删除</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

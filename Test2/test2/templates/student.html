@@ -1,0 +1,38 @@
+{% extends "list.html" %}{% block list %}
+<div class="full">
+	<article class="card">
+		<header>
+			<h3>学生操作</h3>
+			<div class="flex three center demo">
+				<div>
+					<a class='button success full' href="/student/add/">增加学生</a>
+				</div>
+				<div>
+					<a class='button warning full' href="/student/modify/">修改学生</a>
+				</div>
+				<div>
+					<a class='button error full' href="/student/delete/">删除学生</a>
+				</div>
+			</div>
+		</header>
+	</article>
+</div>
+<table class="full">
+	<thead>
+		<tr>
+			<th>学生编号</th>
+			<th>学生姓名</th>
+			<th>学分</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in student_list %}
+		<tr>
+			<td>{{ item.sid }}</td>
+			<td>{{ item.sname }}</td>
+			<td>{{ item.points }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

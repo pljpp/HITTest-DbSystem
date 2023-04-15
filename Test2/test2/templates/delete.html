@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'picnic/picnic.min.css' %}">
+<title></title>
+</head>
+
+<body>
+	<div style="overflow: hidden; height: 100px;">
+		<nav class="demo">
+			<span class="brand">大学数据库管理系统</span>
+			<div class="menu">
+				<a href="\college\" class="pseudo button icon-picture">返回首页</a>
+			</div>
+		</nav>
+	</div>
+	<p></p>
+	<p></p>
+	<div class="flex three demo">
+		<div></div>
+		<div>
+			<form method="post">
+				{% csrf_token %} {% block delete %} {% endblock %}
+				<p></p>
+				<button type="submit" class="button error">删除</button>
+			</form>
+		</div>
+		<div></div>
+	</div>
+</body>
+</html>

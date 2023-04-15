@@ -1,0 +1,20 @@
+{% extends "list.html" %}{% block list %}
+<table class="full">
+	<thead>
+		<tr>
+			<th>教师编号</th>
+			<th>教师姓名</th>
+			<th>薪水</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in instructor_list %}
+		<tr>
+			<td>{{ item.iid }}</td>
+			<td>{{ item.iname }}</td>
+			<td>{{ item.salary }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
