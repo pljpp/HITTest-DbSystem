@@ -5,7 +5,7 @@ class InstructorTeaches:
     studenttakes = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from instructorteaches'
         test_database.execute(sql)
@@ -21,7 +21,7 @@ class StudentTakes:
     studenttakes = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from studenttakes'
         test_database.execute(sql)
@@ -37,7 +37,7 @@ class InstructorInDepartment:
     instructorindepartment = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from instructorindepartment'
         test_database.execute(sql)
@@ -53,7 +53,7 @@ class StudentInDepartment:
     studentindepartment = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from studentindepartment'
         test_database.execute(sql)

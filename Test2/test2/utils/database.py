@@ -5,7 +5,7 @@ class Classroom:
     classroom = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from classroom'
         test_database.execute(sql)
@@ -21,7 +21,7 @@ class Section:
     section = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from section order by year, semester'
         test_database.execute(sql)
@@ -33,7 +33,7 @@ class Section:
         return self.section
     
     def add(self, cid, section, semester, year):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         param_sql = [cid, section, semester, year]
         sql = 'insert into section(cid, section, semester, year) values(%s, %s, %s, %s)'
@@ -43,7 +43,7 @@ class Section:
         connect.close()
     
     def delete(self, cid, section, semester, year):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         param_sql = [cid, section, semester, year]
         sql = 'delete from section where cid = %s and section = %s and semester = %s and year = %s'
@@ -57,7 +57,7 @@ class Need:
     need = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from need'
         test_database.execute(sql)
@@ -73,7 +73,7 @@ class Takes:
     takes = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from takes order by sid'
         test_database.execute(sql)
@@ -85,7 +85,7 @@ class Takes:
         return self.takes
     
     def add(self, sid, cid, section, semester, year, grade):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         grade = int(grade)
         param_sql = [sid, cid, section, semester, year, grade]
@@ -96,7 +96,7 @@ class Takes:
         connect.close()
     
     def modify(self, sid, cid, section, semester, year, grade):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         grade = int(grade)
         param_sql = [grade, sid, cid, section, semester, year]
@@ -107,7 +107,7 @@ class Takes:
         connect.close()
     
     def delete(self, sid, cid, section, semester, year):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         param_sql = [sid, cid, section, semester, year]
         sql = 'delete from takes where sid = %s and cid = %s and section = %s and semester = %s and year = %s'
@@ -121,7 +121,7 @@ class Teaches:
     teaches = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from teaches order by iid'
         test_database.execute(sql)
@@ -137,7 +137,7 @@ class Stud_dept:
     stud_dept = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from stud_dept order by did'
         test_database.execute(sql)
@@ -153,7 +153,7 @@ class Inst_dept:
     inst_dept = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from inst_dept order by did'
         test_database.execute(sql)
@@ -169,7 +169,7 @@ class Sec_class:
     sec_class = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from sec_class order by rid'
         test_database.execute(sql)
@@ -185,7 +185,7 @@ class Sec_time:
     sec_time = []
     
     def __init__(self):
-        connect = pymysql.connect(host = "127.0.0.1", port = 3306, user = "root", password = "318414275", charset = "utf8", db = "test_database_2")
+        connect = pymysql.connect(host = '', port = , user = '', password = '', charset = "utf8", db = '')
         test_database = connect.cursor(cursor = pymysql.cursors.DictCursor)
         sql = 'select * from sec_time order by section'
         test_database.execute(sql)
